@@ -6,12 +6,16 @@ type Props = {
   pin: Object
 }
 
-const Pin = (props: Props) => {
-  const link = `https://www.pinterest.com/pin/${props.pin.id}/`;
-  return (
-    <a data-pin-do="embedPin" href={link}></a>
-  );
-};
+class Pin extends React.Component {
+  props: Props;
+
+  render () {
+    const id = this.props.pin.id;
+    return(
+      <a data-pin-do="embedPin" href={`https://www.pinterest.com/pin/${id}/`}></a>
+    )
+  }
+}
 
 Pin.propTypes = {
   pin: PropTypes.object.isRequired
