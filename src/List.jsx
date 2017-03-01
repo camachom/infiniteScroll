@@ -2,6 +2,7 @@
 
 import React, { PropTypes } from 'react';
 import Pin from './Pin.jsx';
+import _  from 'lodash';
 import './List.css';
 
 type Props = {
@@ -15,20 +16,16 @@ class List extends React.Component {
     super();
     this.state = {start_idx: 0, end_idx: 8, didScroll: false, element: null};
 
-    (this:any).handleScrollCalculations = this.handleScrollCalculations.bind(this);
+    (this:any).handleScrollCalculations = _.throttle(this.handleScrollCalculations.bind(this), 250);
     (this:any).widget = this.widget.bind(this);
-    // (this:any).setScrollInterval = this.setScrollInterval.bind(this);
     (this:any).renderPins = this.renderPins.bind(this);
-    // (this:any).handleScrollEvent = this.handleScrollEvent.bind(this);
-    // (this:any).bindedIntervalMethod = this.bindedIntervalMethod.bind(this);
+    (this:any).handleScrollEvent = this.handleScrollEvent.bind(this);
   }
 
-  handleScrollCalculations() {
-    const e = this.state.element;
-    debugger;
-    const scrHeight = e.scrollHeight;
-    const scrTop = e.scrollTop;
-    const clientHeight = e.clientHeight;
+  handleScrollCalculations(e) {
+    const scrHeight = e.target.scrollHeight;
+    const scrTop = e.target.scrollTop;
+    const clientHeight = e.target.clientHeight;
 
     if (clientHeight + scrTop + 100 >= scrHeight) {
       const end_idx = this.state.end_idx;
@@ -36,10 +33,10 @@ class List extends React.Component {
     }
   }
 
-  // handleScrollEvent(e: Object) {
-  //   e.preventDefault();
-  //   this.setState({didScroll: true});
-  // }
+  handleScrollEvent(e: Object) {
+    e.persist();
+    this.handleScrollCalculations(e);
+  }
 
   componentDidMount(nextProps: Object, nextState: Object) {
     this.widget();
@@ -86,24 +83,7 @@ class List extends React.Component {
     return renderedPins;
   }
 
-  // bindedIntervalMethod() {
-  //   const that = this;
-  //   setInterval( () => {
-  //     debugger;
-  //     if (that.state.didScroll) {
-  //       // need to pass in the element
-  //       that.handleScrollCalculations()
-  //     }
-  //   }, 250);
-  // }
-  //
-  // setScrollInterval(e) {
-  //   this.bindedIntervalMethod();
-  //   this.setState({element: e});
-  // }
-
   render() {
-    debugger;
     const pins = this.renderPins();
     return (
       <div
