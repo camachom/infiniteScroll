@@ -15,7 +15,7 @@ class List extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {start_idx: 0, end_idx: 10, pins: [], cache: {}};
+    this.state = {start_idx: 0, end_idx: 10, pins: [], cache: {}, rounds: 0};
 
     (this:any).handleScrollCalculations = _.throttle(this.handleScrollCalculations.bind(this), 250);
     // (this:any).widget = this.widget.bind(this);
@@ -40,22 +40,34 @@ class List extends React.Component {
     const clientHeight = e.target.clientHeight;
 
     if (clientHeight + scrTop + 100 >= scrHeight) {
-      const end_idx = this.state.end_idx;
+      // add one to round once all components have been rendered
+      let rounds = this.state.rounds;
 
-      const newStartIdx = end_idx % 50;
-      const newEndIdx = (newStartIdx + 10) % 50;
-      const pins = this.pinsToRender(newStartIdx, newEndIdx);
+      if (this.state.pins.length >= this.props.pins.length - 10) {
+        debugger;
+        rounds += 1;
+        // remove bottom components and place them up top
+        let oldPins = this.state.pins.slice();
+        let newPins = oldPins.slice(10,50).concat(oldPins.slice(0,10));
+        this.setState({pins: newPins})
+      }
+      else {
+        const end_idx = this.state.end_idx;
 
-      // caching the previously rendered components
-      debugger;
-      const pinIds = pins.map( (pinId, idx) => {
-        if(!this.state.cache[pinId]) {
-          this.state.cache[pinId] = <PinterestPinWidget key={pinId} size="small" pin={pinId}/>
-        }
-        return pinId;
-      });
+        const newStartIdx = end_idx % 50;
+        const newEndIdx = (newStartIdx + 10) % 50;
+        const pins = this.pinsToRender(newStartIdx, newEndIdx);
 
-      this.setState({start_idx: newStartIdx, end_idx: newEndIdx, pins: pinIds, cache: this.state.cache});
+        // caching the previously rendered components
+        const pinIds = pins.map( (pinId, idx) => {
+          if(!this.state.cache[pinId]) {
+            this.state.cache[pinId] = <PinterestPinWidget key={pinId} size="small" pin={pinId}/>
+          }
+          return pinId;
+        });
+
+        this.setState({start_idx: newStartIdx, end_idx: newEndIdx, pins: pinIds, cache: this.state.cache}, rounds: rounds);
+      }
     }
   }
 
