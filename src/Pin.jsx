@@ -1,7 +1,7 @@
 // @flow
 
 import React, { PropTypes } from 'react';
-
+import './Pin.css';
 
 type Props = {
   pin: Object
@@ -17,7 +17,7 @@ class Pin extends React.Component {
     const description = pin.description;
 
     return(
-      <div>
+      <div className="Pin">
         <h3>{title}</h3>
         <img src={imageURL} alt="Pin Component"/>
         <div>{description}</div>

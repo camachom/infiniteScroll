@@ -1,6 +1,11 @@
 .List {
   overflow-y: scroll;
-  overflow-x: visible;;
+  overflow-x: hidden;
   height: 300px;
-  max-width: 300px;
+  width: 300px;
+}
+
+.empty {
+  height: 300px;
+  width: 300px;
 }
