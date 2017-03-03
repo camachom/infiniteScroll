@@ -34,10 +34,10 @@ class List extends React.Component {
 
   scrollState(scrollTop) {
     const visibleStart = Math.floor(scrollTop / this.pinHeight);
-    const visibleEnd = Math.min(visibleStart + this.pinsPerPage, this.totalPins -1)
+    const visibleEnd = visibleStart + this.pinsPerPage
 
     const displayStart = Math.max(0, visibleStart - this.pinsPerPage * 1.5);
-    const displayEnd = Math.min(displayStart + (4 * this.pinsPerPage), this.totalPins - 1);
+    const displayEnd = displayStart + (4 * this.pinsPerPage);
 
     const newState = {
       visibleStart: visibleStart,

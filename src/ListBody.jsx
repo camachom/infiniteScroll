@@ -31,7 +31,7 @@ class ListBody extends React.Component {
     console.log('jordan is great!');
     let pins = [];
     for (let i = this.props.displayStart; i < this.props.displayEnd; i++) {
-      pins.push(<Pin key={i} pin={this.props.pins[i]} />);
+      pins.push(<Pin key={i % this.props.totalPins} pin={this.props.pins[i % this.props.totalPins]} />);
     }
 
     return(
