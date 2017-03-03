@@ -17,15 +17,14 @@ class List extends React.Component {
     // constants
     this.totalPins = this.props.pins.length;
     this.pins = this.props.pins;
-    // have to fix pins per page to make more universal
-    this.pinHeight = 300;
+    this.pinHeight = this.props.height;
     this.pinsPerPage = 600 / this.pinHeight;
 
     this.state = {
       visibleStart: 0,
       visibleEnd: this.pinsPerPage,
       displayStart: 0,
-      displayEnd: this.pinsPerPage * 2,
+      displayEnd: this.pinsPerPage * 8,
     };
 
     (this:any).scrollState = _.throttle(this.scrollState.bind(this), 100);
@@ -36,8 +35,8 @@ class List extends React.Component {
     const visibleStart = Math.floor(scrollTop / this.pinHeight);
     const visibleEnd = visibleStart + this.pinsPerPage
 
-    const displayStart = Math.max(0, visibleStart - this.pinsPerPage * 1.5);
-    const displayEnd = displayStart + (4 * this.pinsPerPage);
+    const displayStart = Math.max(0, visibleStart - this.pinsPerPage * 3);
+    const displayEnd = displayStart + (8 * this.pinsPerPage);
 
     const newState = {
       visibleStart: visibleStart,

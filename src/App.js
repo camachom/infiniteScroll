@@ -7,9 +7,10 @@ import './App.css';
 
 class App extends Component {
   render() {
+    const height = 300;
     return (
       <div className="App">
-        <List pins={data}/>
+        <List pins={data} height={height}/>
       </div>
     );
   }
