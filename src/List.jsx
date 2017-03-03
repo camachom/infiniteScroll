@@ -1,5 +1,4 @@
 // @flow
-// @flow
 
 import React, { PropTypes } from 'react';
 import ListBody from './ListBody.jsx';
@@ -29,7 +28,6 @@ class List extends React.Component {
       displayEnd: this.pinsPerPage * 2,
     };
 
-    // NOTE: do i need to throttle anymore?
     (this:any).scrollState = _.throttle(this.scrollState.bind(this), 100);
     (this:any).handleScrollEvent = this.handleScrollEvent.bind(this);
   }
@@ -48,11 +46,7 @@ class List extends React.Component {
       displayEnd: displayEnd,
     };
 
-    // const sameState = _.isEqual(newState, this.state);
-    //
-    // if (!sameState) {
-      this.setState(newState);
-    // }
+    this.setState(newState);
   }
 
   handleScrollEvent(e: Object) {

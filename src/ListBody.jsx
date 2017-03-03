@@ -8,7 +8,6 @@ class ListBody extends React.Component {
     super(props);
 
     this.state = ({
-      // shouldUpdate: true,
       pins: this.props.totalPins,
       displayStart: 0,
       displayEnd: 0
@@ -16,34 +15,13 @@ class ListBody extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // console.log("here");
-
-    // const compareVisibility = !(nextProps.visibleStart >= this.state.displayStart && nextProps.visibleEnd <= this.state.displayEnd);
-
-    // const compareVisibility = true;
-    //
-    // let diffTotal = nextProps.pins !== this.state.pins;
-    //
-    // const shouldUpdate = compareVisibility || diffTotal;
-    //
-    // if (shouldUpdate) {
-      this.setState({
-        pins: nextProps.pins,
-        displayStart: nextProps.displayStart,
-        displayEnd: nextProps.displayEnd
-      });
-
-    //   });
-    // } else {
-    //     this.setState({
-    //       shouldUpdate: false
-    //     });
-    // }
+    this.setState({
+      pins: nextProps.pins,
+      displayStart: nextProps.displayStart,
+      displayEnd: nextProps.displayEnd
+    });
   }
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   return this.state.shouldUpdate;
-  // }
   shouldComponentUpdate(nextProps, nextState) {
     return !_.isEqual(nextState, this.state) &&
            !_.isEqual(nextProps, this.props);
