@@ -1,0 +1,12 @@
+.pinner {
+  display: flex;
+}
+
+.pinnerImage {
+  border-radius: 50%;
+}
+
+.pinnerUsernameBoard {
+  display: flex;
+  flex-direction: column;
+}

@@ -2,6 +2,7 @@
 // @flow
 
 import React, { PropTypes } from 'react';
+import Pinner from './Pinner.jsx';
 import './Pin.css';
 
 type Props = {
@@ -16,6 +17,7 @@ class Pin extends React.Component {
     const imageURL = pin.images["236x"]["url"];
     const title = pin.title;
     const description = pin.description;
+    debugger;
 
     return(
       <div className="Pin">
@@ -27,6 +29,7 @@ class Pin extends React.Component {
         <p className="pinDescription">{description}</p>
         <h4 className="pinDomainTitle">Saved from</h4>
         <p className="pinDomain">{pin.domain}</p>
+        <Pinner pin={pin} />
       </div>
     )
   }
