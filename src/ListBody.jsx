@@ -12,6 +12,8 @@ class ListBody extends React.Component {
       displayStart: 0,
       displayEnd: 0
     });
+
+    this.pinsToRender = this.pinsToRender.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -27,13 +29,18 @@ class ListBody extends React.Component {
            !_.isEqual(nextProps, this.props);
   }
 
-  render () {
-    console.log('jordan is great!');
+  pinsToRender() {
     let pins = [];
     for (let i = this.props.displayStart; i < this.props.displayEnd; i++) {
       pins.push(<Pin key={i % this.props.totalPins} pin={this.props.pins[i % this.props.totalPins]} />);
     }
 
+    return pins;
+  }
+
+  render () {
+    const pins = this.pinsToRender();
+    
     return(
       <div>
         <EmptySpace

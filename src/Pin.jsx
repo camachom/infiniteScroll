@@ -19,9 +19,14 @@ class Pin extends React.Component {
 
     return(
       <div className="Pin">
-        <h3>{title}</h3>
-        <img src={imageURL} alt="Pin Component"/>
-        <div>{description}</div>
+        <img className="pinImage" src={imageURL} alt="Pin Component"/>
+        <div className="pinTitleCount">
+          <h3 className="pinTitle">{title}</h3>
+          <p className="pinRepinCount">{pin.repin_count}</p>
+        </div>
+        <p className="pinDescription">{description}</p>
+        <h4 className="pinDomainTitle">Saved from</h4>
+        <p className="pinDomain">{pin.domain}</p>
       </div>
     )
   }

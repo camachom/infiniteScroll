@@ -14,11 +14,8 @@ class List extends React.Component {
 
   constructor(props) {
     super(props);
-    // constants
-    this.totalPins = this.props.pins.length;
-    this.pins = this.props.pins;
-    this.pinHeight = this.props.height;
-    this.pinsPerPage = 600 / this.pinHeight;
+    this.clientHeight = window.innerHeight;
+    this.pinsPerPage = Math.floor(this.clientHeight / this.props.pinHeight);
 
     this.state = {
       visibleStart: 0,
@@ -32,7 +29,7 @@ class List extends React.Component {
   }
 
   scrollState(scrollTop) {
-    const visibleStart = Math.floor(scrollTop / this.pinHeight);
+    const visibleStart = Math.floor(scrollTop / this.props.pinHeight);
     const visibleEnd = visibleStart + this.pinsPerPage
 
     const displayStart = Math.max(0, visibleStart - this.pinsPerPage * 3);
@@ -54,17 +51,16 @@ class List extends React.Component {
   }
 
   render() {
-
     return (
-      <div onScroll={this.handleScrollEvent} className="List">
+      <div onScroll={this.handleScrollEvent} className="List" style={{height: this.clientHeight}}>
         <ListBody
-          pins={this.pins}
+          pins={this.props.pins}
           visibleStart={this.state.visibleStart}
           visibleEnd={this.state.visibleEnd}
           displayStart={this.state.displayStart}
           displayEnd={this.state.displayEnd}
-          pinHeight={this.pinHeight}
-          totalPins={this.totalPins}
+          pinHeight={this.props.pinHeight}
+          totalPins={this.props.pins.length}
           />
       </div>
     )
