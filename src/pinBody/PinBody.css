@@ -1,0 +1,36 @@
+.pinDescription {
+  width: 90%;
+  overflow: hidden;
+
+  /* limits description to two lines */
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 16px;
+  max-height: 32px;
+
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.pinDomain {
+  color: #b5b5b5;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.pinDomainTitle {
+  color: #b5b5b5;
+  font-weight: normal;
+  margin-bottom: 6px;
+}
+
+.pinBoardname {
+  color: #555;
+  font-weight: normal;
+}
+
+.pinTitleBoardContainer {
+  margin-bottom: 6px;
+}

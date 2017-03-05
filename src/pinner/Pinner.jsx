@@ -8,7 +8,7 @@ const Pinner = ({pin}) => {
       <object data={pin.pinner.image_small_url} type="image/png" className="pinnerImage">
         <img
           src="http://res.cloudinary.com/doilr7vvv/image/upload/v1488671075/genericUser_denhyl.png"
-          alt="Pinner picture"
+          alt="Pin author"
           className="pinnerImage">
         </img>
       </object>
@@ -18,6 +18,10 @@ const Pinner = ({pin}) => {
       </div>
     </a>
   );
+};
+
+Pinner.propTypes = {
+  pin: PropTypes.object.isRequired
 };
 
 export default Pinner;

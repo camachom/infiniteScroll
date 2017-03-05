@@ -1,7 +1,7 @@
 // @flow
 
 import React, { PropTypes } from 'react';
-import ListBody from './ListBody.jsx';
+import ListBody from '../listBody/ListBody.jsx';
 import _ from 'lodash';
 import './List.css';
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import Pin from './Pin.jsx';
-import EmptySpace from './EmptySpace.jsx';
+import Pin from '../pin/Pin.jsx';
+import EmptySpace from '../emptySpace/EmptySpace.jsx';
 import _ from 'lodash';
 
 class ListBody extends React.Component {
@@ -40,7 +40,7 @@ class ListBody extends React.Component {
 
   render () {
     const pins = this.pinsToRender();
-    
+
     return(
       <div>
         <EmptySpace
