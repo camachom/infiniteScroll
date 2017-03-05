@@ -7,7 +7,8 @@ import './App.css';
 
 class App extends Component {
   render() {
-    const pinHeight = 500;
+    // pinHeight is arbitrary. Simply based on my styling
+    const pinHeight = 501 / 3;
     return (
       <div>
         <List id="List" pins={data} pinHeight={pinHeight}/>

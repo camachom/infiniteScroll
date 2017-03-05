@@ -1,0 +1,10 @@
+.idxRange {
+  color: white;
+}
+
+.idxRangeContainer {
+  background-color: red;
+  position: fixed;
+  left: 2%;
+  bottom: 2%;
+}

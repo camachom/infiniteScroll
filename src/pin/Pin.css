@@ -1,6 +1,9 @@
 .Pin {
+  width: 30%;
+
   padding: 10px;
-  height: 480px;
+  /* NOTE: changed from 480 */
+  height: 481px;
   overflow-x: hidden;
 
   display: flex;
