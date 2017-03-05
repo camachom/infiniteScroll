@@ -1,36 +1,31 @@
-
-/*.Pin {
-  width: 300px;
-  height: 300px;
-  overflow: hidden;;
-}*/
-
 .Pin {
   padding: 10px;
-  /*width: 300px;*/
-  height: 400px;
-  overflow: hidden;
-
-  margin: 0 auto;
+  height: 480px;
+  overflow-x: hidden;
 
   display: flex;
   flex-direction: column;
 }
+
 
 .Pin:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
 .pinDescription {
-  width: 300px;
-  /*height: 150px;*/
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  width: 90%;
   overflow: hidden;
 
-  display: block;
+  /* limits description to two lines */
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 16px;
+  max-height: 32px;
 
   color: #333;
+  margin-bottom: 6px;
 }
 
 .pinTitleCount {
@@ -43,16 +38,27 @@
 .pinDomain {
   color: #b5b5b5;
   font-weight: bold;
+  margin-bottom: 6px;
 }
 
 .pinDomainTitle {
   color: #b5b5b5;
   font-weight: normal;
+  margin-bottom: 6px;
 }
 
 .pinTitle {
+  width: 84%;
   color: #444;
   font-weight: bold;
+
+  font-size: 25px;
+  /*line-height: 16px;*/
+  margin-bottom: 6px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .pinRepinCount {
@@ -62,6 +68,18 @@
 .pinImage {
   border-radius: 6px 6px 0 0;
   object-fit: cover;
-  width: 100%;
   height: 300px;
+}
+
+.pinBoardname {
+  color: #555;
+  font-weight: normal;
+}
+
+.pinTitleBoardContainer {
+  margin-bottom: 6px;
+}
+
+.pinRepinCountIcon {
+  width: 10px;
 }

@@ -15,20 +15,26 @@ class Pin extends React.Component {
   render () {
     const pin = this.props.pin;
     const imageURL = pin.images["236x"]["url"];
-    const title = pin.title;
+    let title = pin.title;
+    title.length <= 0 ? title = "Untitled =(" : null;
     const description = pin.description;
-    debugger;
 
     return(
       <div className="Pin">
         <img className="pinImage" src={imageURL} alt="Pin Component"/>
         <div className="pinTitleCount">
           <h3 className="pinTitle">{title}</h3>
-          <p className="pinRepinCount">{pin.repin_count}</p>
+          <div>
+            <img    src="http://res.cloudinary.com/doilr7vvv/image/upload/v1488659829/pinIcon_hqbzqq.png" alt="Pin count icon" className="pinRepinCountIcon"/>
+            <span className="pinRepinCount">  {pin.repin_count}</span>
+          </div>
         </div>
         <p className="pinDescription">{description}</p>
-        <h4 className="pinDomainTitle">Saved from</h4>
         <p className="pinDomain">{pin.domain}</p>
+        <div className="pinTitleBoardContainer">
+          <span className="pinDomainTitle">From</span>
+          <span className="pinnerBoardname">  {pin.board.name}</span>
+        </div>
         <Pinner pin={pin} />
       </div>
     )

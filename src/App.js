@@ -10,7 +10,7 @@ class App extends Component {
 
   render() {
     // NOTE: this needs to change
-    const pinHeight = 400;
+    const pinHeight = 500;
     return (
       <List id="List" pins={data} pinHeight={pinHeight}/>
     );

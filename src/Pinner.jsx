@@ -5,14 +5,16 @@ const Pinner = ({pin}) => {
   const boardURL = `https://www.pinterest.com${pin.board.url}`;
   return (
     <a href={boardURL} className="pinner">
-      <img
-        src={pin.pinner.image_small_url}
-        alt="Pinner picture"
-        className="pinnerImage">
-      </img>
+      <object data={pin.pinner.image_small_url} type="image/png" className="pinnerImage">
+        <img
+          src="http://res.cloudinary.com/doilr7vvv/image/upload/v1488671075/genericUser_denhyl.png"
+          alt="Pinner picture"
+          className="pinnerImage">
+        </img>
+      </object>
       <div className="pinnerUsernameBoard" >
-        <p>{pin.pinner.username}</p>
-        <p>{pin.board.name}</p>
+        <p className="pinnerUsername">{pin.pinner.username}</p>
+        <p className="pinnerBoardname">{pin.board.name}</p>
       </div>
     </a>
   );
