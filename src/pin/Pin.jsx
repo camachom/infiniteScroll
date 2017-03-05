@@ -34,12 +34,15 @@ class Pin extends React.Component {
 
   render () {
     const pin = this.props.pin;
+    const pinURL = `https://www.pinterest.com/pin/${pin.id}`
 
     return(
       <div className="Pin">
         <PinImage pin={pin} openModal={this.handleOpenModal} closeModal={this.handleCloseModal} showModal={this.state.showModal}/>
-        <PinTitle title={pin.title.length <= 0 ? "Untitled =(" : pin.title} repinCount={pin.repin_count} />
-        <PinBody description={pin.description} domain={pin.domain} boardName={pin.board.name}/>
+        <a className="pinTitleBody" href={pinURL}>
+          <PinTitle title={pin.title.length <= 0 ? "Untitled =(" : pin.title} repinCount={pin.repin_count} />
+          <PinBody description={pin.description} domain={pin.domain} boardName={pin.board.name}/>
+        </a>
         <Pinner pin={pin} />
       </div>
     )

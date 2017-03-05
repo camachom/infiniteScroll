@@ -7,3 +7,5 @@ ReactDOM.render(
   <App />,
   document.getElementById('root')
 );
+
+console.log("Check out the GitHub repo here: https://github.com/camachom/pinterestChallenge");
