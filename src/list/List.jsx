@@ -39,7 +39,6 @@ class List extends React.Component {
 
     // displayStart/End denote the indexes of the pins rendered which include a buffer in additon to the immedietly visible
     const displayStart = Math.max(0, visibleStart - this.pinsPerPage);
-    // changing 8 to something else
     const displayEnd = displayStart + (4 * this.pinsPerPage);
 
     const newState = {
@@ -49,7 +48,6 @@ class List extends React.Component {
       displayEnd: displayEnd,
     };
 
-    console.log(`new ${visibleStart}`, `old ${this.state.visibleStart}`);
     if (Math.abs(visibleStart - this.state.visibleStart) >= 3 && visibleStart % 3 === 0) {
       this.setState(newState);
     }
