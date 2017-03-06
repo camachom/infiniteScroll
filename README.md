@@ -57,7 +57,7 @@ Load Any Board Feature: I would simply use the JS SDK and make some adjustments 
 
 Modularity: I originally wrote this project for a single column scroll. It became clear that having multiple columns would be a much more engaging experience for the user. Therefore, I decided to take the risk and sacrifice some of the existing modularity/stability to improve the UI.
 
-Testing: I was excited to use Jest, but did not get to it.
+Testing: I was excited to use Jest, but did not get to it. I also started using Flow, but could not follow through becuase of time limitations.
 
 Known Bugs:
   1. The Pinterest browser button extension for Chrome makes the images move on hover which becomes really distracting when scrolling

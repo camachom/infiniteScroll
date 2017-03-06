@@ -3,7 +3,6 @@ import Modal from 'react-modal';
 import "./PinImage.css";
 
 const PinImage = ({pin, openModal, closeModal, showModal}) => {
-  // NOTE: changed image to 736 form 236
   const imageURL = pin.images["736x"]["url"];
   const imageURLModal = pin.images["736x"]["url"];
 

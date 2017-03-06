@@ -19,6 +19,7 @@ a {
 }
 
 .pinnerImage {
+  /* used as a backup image if original image fails */
   background-image: url("http://res.cloudinary.com/doilr7vvv/image/upload/v1488671075/genericUser_denhyl.png");
   background-size: cover;
 }

@@ -45,7 +45,6 @@ class ListBody extends React.Component {
 
   render () {
     const pins = this.pinsToRender();
-    // added the 3 to the empty space and divided by 3
     return(
       <div className="listBody">
         <EmptySpace

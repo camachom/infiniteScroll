@@ -2,7 +2,6 @@
 
 import React, { PropTypes } from 'react';
 import ListBody from '../listBody/ListBody.jsx';
-import IdxVisual from '../idxVisual/IdxVisual.jsx';
 import _ from 'lodash';
 import './List.css';
 
@@ -16,10 +15,10 @@ class List extends React.Component {
   constructor(props) {
     super(props);
     this.clientHeight = window.innerHeight;
+    // this would be the ideal scenario to make it more modular, but I want to force a three column render
     // this.pinsPerPage = Math.floor(this.clientHeight / this.props.pinHeight);
     this.pinsPerPage = 6;
 
-    // changed the 8 to something differnt
     this.state = {
       visibleStart: 0,
       visibleEnd: this.pinsPerPage,
@@ -48,10 +47,10 @@ class List extends React.Component {
       displayEnd: displayEnd,
     };
 
+    // makes sure I'm deleting and adding 3 elements at a time to avoid reordering by flexbox
     if (Math.abs(visibleStart - this.state.visibleStart) >= 3 && visibleStart % 3 === 0) {
       this.setState(newState);
     }
-    // this.setState(newState);
   }
 
   handleScrollEvent(e: Object) {
@@ -61,9 +60,6 @@ class List extends React.Component {
   }
 
   render() {
-    if (this.state.displayStart % 3 !== 0) {
-      debugger;
-    }
     return (
       <div>
         <div onScroll={this.handleScrollEvent} className="List" style={{height: this.clientHeight}}>
@@ -76,11 +72,6 @@ class List extends React.Component {
             pinHeight={this.props.pinHeight}
             />
         </div>
-        <IdxVisual
-          displayStart={this.state.displayStart}
-          displayEnd={this.state.displayEnd}
-          totalPins={this.props.pins.length}
-        />
       </div>
     )
   }
